@@ -1,8 +1,10 @@
-package chapter_02;
-
 public class Apple {
+    public enum Color {
+        RED, GREEN, BLUE
+    }
 
     private Color color;
+    private int weight;
 
     public Color getColor() {
         return color;
@@ -12,9 +14,11 @@ public class Apple {
         this.color = color;
     }
 
-    public Apple(String color) {
-        this.color = Color.valueOf(color);
+    public double getWeight() {
+        return weight;
     }
 
-
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 }
