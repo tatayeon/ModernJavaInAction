@@ -27,17 +27,32 @@ public class Ex1_lowCaloriDisheName {
 //            names.add(dish.getName());
 //        }
 
-        List<String> names = new ArrayList<>();
-        Iterator<String> iterator = names.iterator();
-        while(iterator.hasNext()){
-            Dish dish = iterator.next();
-            names.add(dish.getName());
-        }
+//        List<String> names = new ArrayList<>();
+//        Iterator<String> iterator = names.iterator();
+//        while(iterator.hasNext()){
+//            Dish dish = iterator.next();
+//            names.add(dish.getName());
+//        }
+//
+//        //스트림 내부반복
+//        List<String> names2 = menu.stream()
+//                .map(Dish::getName)
+//                .collect(toList());
 
-        //스트림 내부반복
+
         List<String> names2 = menu.stream()
-                .map(Dish::getName)
+                .filter(dish -> {
+                    System.out.println("filtering: " + dish.getName());
+                    return dish.getCalories() > 300;
+                })
+                .map(dish -> {
+                    System.out.println("maping: " + dish.getName());
+                    return dish.getName();
+                })
+                .limit(3)
                 .collect(toList());
+        System.out.println(names2);
+
 
     }
 
