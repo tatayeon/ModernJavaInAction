@@ -1,6 +1,7 @@
 package chapter_04;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,10 +15,30 @@ public class Ex1_lowCaloriDisheName {
 
         List<String> lowCaloriDisheNames =
                 menu.stream()
-                        .filter(d -> d.getCalories() < 400)
-                        .sorted(comparing(Dish::getCalories))
-                        .map(Dish::getName)
-                        .collect(toList());
+                        .filter(d -> d.getCalories() > 300) //칼로리가 300이하인것이고
+                        .map(Dish::getName) // 이름을 가져올거야
+                        .limit(3)//상위 3개
+                        .collect(toList()); //list형식으로
+        System.out.println(lowCaloriDisheNames);
+
+//        //켈랙션의 내부 반복
+//        List<String> names = new ArrayList<>();
+//        for(Dish dish : menu){
+//            names.add(dish.getName());
+//        }
+
+        List<String> names = new ArrayList<>();
+        Iterator<String> iterator = names.iterator();
+        while(iterator.hasNext()){
+            Dish dish = iterator.next();
+            names.add(dish.getName());
+        }
+
+        //스트림 내부반복
+        List<String> names2 = menu.stream()
+                .map(Dish::getName)
+                .collect(toList());
+
     }
 
 }
