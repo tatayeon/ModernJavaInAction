@@ -1,5 +1,7 @@
 package modernjavainaction.chap04;
 
+import chapter_04.Dish;
+
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 

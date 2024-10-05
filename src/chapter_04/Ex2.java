@@ -50,7 +50,24 @@ public class Ex2 {
                 .collect(toList());
         System.out.println(filteredMunu2);
 
+        //스트림의 각 요소에 함수 적용하기
 
+        List<String> dishNames = menu.stream()
+                .map(Dish::getName)
+                .collect(toList());
+
+        List<String> words = Arrays.asList("modern", "Java", "In", "Action");
+        List<Integer> wordLengths = words.stream()
+                .map(String::length)
+                .collect(toList());
+
+        System.out.println(wordLengths);
+
+        List<Integer> dishNameLengths = menu.stream()
+                .map(Dish::getName)
+                .map(String::length)
+                .collect(toList());
+        System.out.println(dishNameLengths);
 
     }
 }
