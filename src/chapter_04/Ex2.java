@@ -68,6 +68,5 @@ public class Ex2 {
                 .map(String::length)
                 .collect(toList());
         System.out.println(dishNameLengths);
-
     }
 }
