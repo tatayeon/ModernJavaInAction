@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static chapter_04.Dish.menu;
 import static java.util.stream.Collectors.toList;
 
 public class Ex3 {
@@ -25,5 +26,21 @@ public class Ex3 {
                 .map(n -> n * n)
                 .collect(toList());
         System.out.println(squares);
+
+        List<Integer> num1 = Arrays.asList(1, 2, 3);
+        List<Integer> num2 = Arrays.asList(3, 4);
+        List<int[]> pre = num1.stream()
+                .flatMap(i -> num2.stream()
+                .map(j-> new int[]{i,j}))
+                .collect(toList());
+        System.out.println(pre);
+
+        //프레디케이트가 적어도 한 요소와 일치하는지 확인.
+        //anyMatch()함수를 사용해서 적어도 한 요소와 일치하는지 확인할 때 anyMatch를 사용한다.
+        if(menu.stream().anyMatch(Dish::isVegetarian)){
+            System.out.println("the menu is (somewhat) vegetarian");
+        }
+
+
     }
 }
