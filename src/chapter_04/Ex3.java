@@ -1,7 +1,9 @@
 package chapter_04;
 
+import javax.print.attribute.standard.MediaSize;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static chapter_04.Dish.menu;
@@ -47,6 +49,21 @@ public class Ex3 {
 
         //반대로 이거는 일치하는 요소가 없는지 확인한다.
         boolean isHealthy1 = menu.stream().noneMatch(d -> d.getCalories()>=1000);
+
+        //findAny를 사용해서 현재 스트림에서 임의의 요소를 반환한다.
+        //스트림 파이프라인은 내부적으로 단일 과정으로 실행할 수 있도록 최적화된다.
+        //Optional은 null을 처리하기 위해서 예외처리를 위해 사용
+        Optional<Dish> dish = menu.stream().filter(Dish::isVegetarian)
+                .findAny();
+
+        //이렇게 findFirst를 사용을하면 논리적인 아이템 순서가 정해저 있는 것중에 처음을 찾을 수 있다.
+        List<Integer> someNumbers = Arrays.asList(1, 2, 3, 4, 5);
+        Optional<Integer> firstSquareDivisibleByThree =
+                someNumbers.stream()
+                        .map(n -> n * n)
+                        .filter(n -> n % 3 == 0)
+                        .findFirst(); //9
+        System.out.println(firstSquareDivisibleByThree);
 
 
 
