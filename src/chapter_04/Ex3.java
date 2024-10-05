@@ -41,6 +41,14 @@ public class Ex3 {
             System.out.println("the menu is (somewhat) vegetarian");
         }
 
+        //allMatch는 모든 요소가 주어진 프레디케이트와 일치하는지르 검사한다.
+        boolean isHealthy = menu.stream()
+                .allMatch(dish -> dish.getCalories() < 1000);
+
+        //반대로 이거는 일치하는 요소가 없는지 확인한다.
+        boolean isHealthy1 = menu.stream().noneMatch(d -> d.getCalories()>=1000);
+
+
 
     }
 }
