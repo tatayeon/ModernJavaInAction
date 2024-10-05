@@ -2,6 +2,7 @@ package chapter_04;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Ex4 {
 
@@ -27,7 +28,14 @@ public class Ex4 {
         // 3단계: 여기에서는 기본 자바8에 들어가 있는 Integer클래스에 두 숫자를 더하는 정적 sum메서드를 제공한다 따라서 Integer::sum 이런식으로 사용도 가능하다.
         int sum3 = numbers.stream().reduce(0, Integer::sum);
         System.out.println("sum3: " + sum3);
+
+        //또한 이렇게 최댓값 최솟값도 있으니깐 참고하시고
+        Optional<Integer> max = numbers.stream().reduce(Integer::max);
+        Optional<Integer> min = numbers.stream().reduce(Integer::min);
+        System.out.println(min);
+        System.out.println(max);
+
+
+
     }
-
-
 }
