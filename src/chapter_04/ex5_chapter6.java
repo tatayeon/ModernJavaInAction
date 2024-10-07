@@ -47,6 +47,23 @@ public class ex5_chapter6 {
         IntSummaryStatistics menuStatiestics = specialMenu.stream().collect(summarizingInt(Dish::getCalories));
         System.out.println("menuStatiestics:" + menuStatiestics);
 
+        //다음은 문자열 연결하는 코드
+        String shortMenu = specialMenu.stream().map(Dish::getName).collect(Collectors.joining(","));
+        System.out.println("shortMenu:" + shortMenu);
+
+        //컬렉션 프레임워크 유연성: 같은 연산도 다양한 방식으로 수행할 수 있다.
+        totalCalories = specialMenu.stream().collect(reducing(
+                0, Dish::getCalories, Integer::sum));
+        System.out.println("totalCalories:" + totalCalories);
+
+        //리듀싱으로 같은 연산을 수행하면
+        int totalCalories_reduce = specialMenu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
+        System.out.println("totalCalories_reduce:" + totalCalories_reduce);
+
+        //mapToInt 사용을 해도
+        int totalCalories_mapToInt = specialMenu.stream().mapToInt(Dish::getCalories).sum();
+        System.out.println("totalCalories_mapToInt:" + totalCalories_mapToInt);
+
 
 
     }
