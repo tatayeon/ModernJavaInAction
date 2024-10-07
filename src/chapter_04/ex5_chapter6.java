@@ -1,8 +1,12 @@
 package chapter_04;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.maxBy;
 
 public class ex5_chapter6 {
 
@@ -25,6 +29,12 @@ public class ex5_chapter6 {
         //위에서 처럼의 불필요한 것들을 생략이 기능하다
         long howManyDishes2 = specialMenu.stream().count();
         System.out.println(howManyDishes2);
+
+        Comparator<Dish> dishCaloriesCompartor = Comparator.comparingInt(Dish::getCalories);
+
+        //maxBy로 최댓값 찾기
+        Optional<Dish> mostCalorieDish = specialMenu.stream().collect(maxBy(dishCaloriesCompartor));
+        System.out.println(mostCalorieDish);
 
 
 
