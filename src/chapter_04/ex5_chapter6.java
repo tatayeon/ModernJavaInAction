@@ -69,6 +69,20 @@ public class ex5_chapter6 {
         System.out.println("dishesByType:" + dishesByType);
 
 
+        //이렇게 직접 내가 원하는 그룹으로 만들어서 지정도 가능하다
+        //내가 원하는 방식으로 구현이 가능
+        enum CaloricLevel { DIET, NORMAL, FAT}
+
+        Map<CaloricLevel, List<Dish>> disheByCaloricLevel = specialMenu.stream().collect(
+                groupingBy(dish -> {
+                    if (dish.getCalories() <= 400) return CaloricLevel.DIET;
+                    else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                    else return CaloricLevel.FAT;
+                })
+        );
+
+        System.out.println("disheByCaloricLevel:" + disheByCaloricLevel);
+
 
 
 
