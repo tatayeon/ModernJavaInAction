@@ -50,6 +50,12 @@ public class Ex6 {
 
         System.out.println("vegetarianDishByType" +vegetarianDishByType);
 
+        Map<Boolean, Dish> mostCaloricDishByType = specialMenu.stream().collect(
+                partitioningBy(Dish::isVegetarian,
+                        collectingAndThen(maxBy(Comparator.comparingInt(Dish::getCalories)), Optional::get)
+        ));
+        System.out.println("mostCaloricDishByType"+mostCaloricDishByType);
+
 
 
     }
