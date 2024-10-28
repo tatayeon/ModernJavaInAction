@@ -64,6 +64,12 @@ public class ex5_chapter6 {
         int totalCalories_mapToInt = specialMenu.stream().mapToInt(Dish::getCalories).sum();
         System.out.println("totalCalories_mapToInt:" + totalCalories_mapToInt);
 
+        //groupingBy 사용예제
+        Map<Dish.Type, List<Dish>> dishesByType = specialMenu.stream().collect(groupingBy(Dish::getType));
+        System.out.println("dishesByType:" + dishesByType);
+
+
+
 
 
     }
