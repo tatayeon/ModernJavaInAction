@@ -64,8 +64,8 @@ public class ex5_chapter6 {
         int totalCalories_mapToInt = specialMenu.stream().mapToInt(Dish::getCalories).sum();
         System.out.println("totalCalories_mapToInt:" + totalCalories_mapToInt);
 
-        //groupingBy 사용예제
-        Map<Dish.Type, List<Dish>> dishesByType = specialMenu.stream().collect(groupingBy(Dish::getType));
+        //groupingBy 사용예제 이전 방식은 해당하는 키가 없다면 키 자체가 사라진다는 단점이 있는데 이렇게 함으로써 해당하는 요소가 없어도 출력이 가능하다.
+        Map<Dish.Type, List<Dish>> dishesByType = specialMenu.stream().collect(groupingBy(Dish::getType, filtering(dish -> dish.getCalories() > 500, toList())));
         System.out.println("dishesByType:" + dishesByType);
 
 
@@ -82,6 +82,19 @@ public class ex5_chapter6 {
         );
 
         System.out.println("disheByCaloricLevel:" + disheByCaloricLevel);
+
+        //다수준의 구룹화도 가능하다.
+        Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishesByCaloricLevel2 = specialMenu.stream().collect(
+                groupingBy(Dish::getType,
+                        groupingBy(dish -> {
+                            if(dish.getCalories() <= 400) return CaloricLevel.DIET;
+                            else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                            else return CaloricLevel.FAT;
+                        }))
+        );
+
+        System.out.println("dishesByCaloricLevel2"+ dishesByCaloricLevel2);
+
 
 
 
