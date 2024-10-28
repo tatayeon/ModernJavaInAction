@@ -95,6 +95,20 @@ public class ex5_chapter6 {
 
         System.out.println("dishesByCaloricLevel2"+ dishesByCaloricLevel2);
 
+        Map<Dish.Type, Long> typeCounting = specialMenu.stream().collect(groupingBy(Dish::getType, counting()));
+        System.out.println("typeCounting:" + typeCounting);
+
+        Map<Dish.Type, Optional<Dish>> mostCaloricDish = specialMenu.stream().collect(
+                groupingBy(Dish::getType, maxBy(Comparator.comparingInt(Dish::getCalories))));
+
+        System.out.println("mostCaloricDish:" + mostCaloricDish);
+
+        Map<Dish.Type, Integer> typeCounting2 = specialMenu.stream().collect(
+                groupingBy(Dish::getType, summingInt(Dish::getCalories))
+        );
+        System.out.println("typeCounting2:" + typeCounting2);
+
+
 
 
 
