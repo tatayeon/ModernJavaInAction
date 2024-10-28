@@ -23,6 +23,8 @@ public class ex5_chapter6 {
 
 //        long howManyDishes = specialMenu.stream().(Collectors.counting());
 
+
+
         //위에서 처럼의 불필요한 것들을 생략이 기능하다
         long howManyDishes2 = specialMenu.stream().count();
         System.out.println(howManyDishes2);
