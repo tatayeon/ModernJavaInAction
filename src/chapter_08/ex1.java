@@ -31,8 +31,9 @@ public class ex1 {
                 entry("bbb", 23),
                 entry("ccc", 12)
         );
-
         System.out.println(friends4);
+
+
 
     }
 
