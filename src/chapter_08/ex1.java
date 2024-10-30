@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static java.util.Map.entry;
+
 public class ex1 {
 
     public static void main(String[] args) {
@@ -23,6 +25,14 @@ public class ex1 {
         //맵 팩토리
         Map<String, Integer> friends3 = Map.of("aaa", 1, "bbb", 2, "ccc", 3);
         System.out.println(friends3);
+
+        Map<String, Integer> friends4 = Map.ofEntries(
+                entry("aaa", 30),
+                entry("bbb", 23),
+                entry("ccc", 12)
+        );
+
+        System.out.println(friends4);
 
     }
 
