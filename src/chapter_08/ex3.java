@@ -56,6 +56,15 @@ public class ex3 {
         lines.forEach(line ->
                 dataToHash.computeIfAbsent(line, ex3::calculateDigest)
         );
+
+        //교체 패턴
+
+        Map<String, String> favoriteMovies2 = new HashMap<>();
+        favoriteMovies2.put("aaa", "sad1");
+        favoriteMovies2.put("bbb", "sad2");
+        favoriteMovies2.put("ccc", "asd3");
+        favoriteMovies2.replaceAll((friend, movie) -> movie.toUpperCase()); //모두더 댜문자로 바꿔버린다.
+        System.out.println(favoriteMovies2);
     }
 
     private static byte[] calculateDigest(String key) {
@@ -66,4 +75,16 @@ public class ex3 {
             throw new RuntimeException("SHA-256 algorithm not found", e);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
